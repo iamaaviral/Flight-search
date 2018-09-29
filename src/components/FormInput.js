@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
+import myData from '../flights.json';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-class flightForm extends Component {
+class FlightForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       from: "",
       to: "",
       departureDate: moment()
-      //   returnDate: moment().add(2, "days")
+      //returnDate: moment().add(2, "days")
     };
     this.search = this.search.bind(this);
     this.change = this.change.bind(this);
@@ -19,8 +20,10 @@ class flightForm extends Component {
   }
 
   handleChange(date) {
+    const word = myData[0].departure.scheduledTime;
+		console.log(word); // output 'testing'
     this.setState({
-      startDate: date
+      departureDate: date
     });
   }
 
@@ -39,7 +42,6 @@ class flightForm extends Component {
 
   validate() {
     const inputs = document.getElementById("input");
-    console.log(inputs);
     let isFormValid = true;
 
     const isInputValid = this.showInputError(inputs.name);
@@ -133,4 +135,4 @@ class flightForm extends Component {
   }
 }
 
-export default flightForm;
+export default FlightForm;
