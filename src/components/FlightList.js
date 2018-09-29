@@ -1,14 +1,8 @@
-import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import React, { Component } from 'react';
 
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 class FlightList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     // const createItem = function item(itemText, i) {
     return (
@@ -16,15 +10,15 @@ class FlightList extends Component {
 
       <li>
         <span role="presentation" className="completed">
-          sdfsdfsd
+          {this.props.result[0].airline.name}
         </span>
         <div className="btn">
           <button className="imp">
-            {" "}
+            {' '}
             <i className="fa fa-star-o" />
           </button>
           <button className="del">
-            {" "}
+            {' '}
             <i className="fa fa-trash-o" />
           </button>
         </div>

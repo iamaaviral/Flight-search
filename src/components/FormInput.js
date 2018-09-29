@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import myData from '../flights.json';
 
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 class FlightForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      from: "",
-      to: "",
+      from: '',
+      to: '',
       departureDate: moment()
       //returnDate: moment().add(2, "days")
     };
@@ -20,8 +20,6 @@ class FlightForm extends Component {
   }
 
   handleChange(date) {
-    const word = myData[0].departure.scheduledTime;
-		console.log(word); // output 'testing'
     this.setState({
       departureDate: date
     });
@@ -32,16 +30,34 @@ class FlightForm extends Component {
     this.showInputError(e.target.name);
   }
 
+  getFlightData() {
+    let results = myData.filter((item, index) => {
+      if (item.departure.iataCode !== this.state.from.toUpperCase()) {
+        return;
+      }
+      if (item.arrival.iataCode !== this.state.to.toUpperCase()) {
+        return;
+      }
+      if (
+        moment.utc(item.departure.scheduledTime).format('MM/DD/YYYY') !==
+        this.state.departureDate.format('MM/DD/YYYY')
+      ) {
+        return;
+      }
+      return item;
+    });
+    this.props.action(results);
+  }
+
   search(e) {
     e.preventDefault();
-    if (!this.validate()) {
-    } else {
-      console.log("do something");
+    if (this.validate()) {
+      this.getFlightData();
     }
   }
 
   validate() {
-    const inputs = document.getElementById("input");
+    const inputs = document.getElementById('input');
     let isFormValid = true;
 
     const isInputValid = this.showInputError(inputs.name);
@@ -63,7 +79,7 @@ class FlightForm extends Component {
       return false;
     }
 
-    error.textContent = "";
+    error.textContent = '';
     return true;
   }
 
@@ -106,7 +122,7 @@ class FlightForm extends Component {
               onChange={this.handleChange}
               minDate={moment()}
               withPortal
-              maxDate={moment().add(5, "months")}
+              maxDate={moment().add(5, 'months')}
               showDisabledMonthNavigation
             />
           </div>
