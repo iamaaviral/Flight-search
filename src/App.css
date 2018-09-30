@@ -46,14 +46,14 @@ body {
 .wrapper{
     min-width: 230px;
     max-width: 500px;
-    margin: 45px auto;
+    margin: 10px auto 20px auto;
     text-align: center;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5),0px 1px 1px -3px rgba(0, 0, 0, 0.5), 0px 2px 2px -6px rgba(0, 0, 0, 0.5);
   }
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 20px 0;
 }
 
 .group input{
@@ -108,7 +108,7 @@ label {
 
 .btn-box {
     text-align: center;
-    margin: 40px 0;
+    margin: 30px 0;
 }
 
 .button {
@@ -185,7 +185,6 @@ label {
   margin: -50px 40px -2px 0px;
   display:flex;
   padding: 50px 0 0 0;
-  /* border-radius: 10px; */
   height:100vh;
   overflow:hidden;
   /* overflow-y: hidden; */
@@ -201,23 +200,24 @@ label {
   width: 240px;
   flex-direction: column;
   height:100vh;
-  /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5),0px 1px 1px -3px rgba(0, 0, 0, 0.5), 0px 2px 2px -6px rgba(0, 0, 0, 0.5); */
-  /* background-color: #111; */
-  /* border: 1px solid red; */
+}
+
+.App .left-side-bar .status-btn {
+  align-items: stretch;
 }
 
 
 .App .right-side-bar{
-  margin:auto;
+  margin: 45px auto;
   width:80%;
   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);         */
   /* border: 1px solid red; */
 }
+
 .App .right-side-bar .main{
-  max-height:80%;
+  max-height:50vh;
   /* border:1px solid red; */
   overflow:auto;
-  /* overflow:auto; */
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);        
   /* border: 1px solid red; */
 }
@@ -236,29 +236,44 @@ label {
 }
 
 .App .right-side-bar ul li {
-  position: relative;
   font-size: 18px;
-  display: list-item;
   padding: 10px;
   border-radius: 10px;
   margin-top:5px;
   border:1px solid rgba(0,0,0,0.1);
   transition:0.5s;
+  animation-name: slide;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+      /* transform: translateY(10px); */
 }
 
+@keyframes slide {
+from {
+  margin-top: -20px;
+}
 
-#app .right-side-bar ul li:hover, .hover,a:hover{
+to {
+  margin-top: 5px;
+}
+}
+
+.App .right-side-bar ul li:hover, .hover,a:hover{
   color: white;
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.1) ;
 } 
 
-#app .right-side-bar ul li span{
+.App .right-side-bar ul li .list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size:  25px;
   cursor:pointer;    
 }
 
-#app .right-side-bar .btn{
+.App .right-side-bar .btn{
     position: absolute;
     display: inline-block;
     right: 0px;      
@@ -298,3 +313,18 @@ padding: 10px;
   opacity: 0.6;
   text-decoration: line-through;
 } */
+
+
+.form {
+  margin: 0 auto;
+  padding: 100px 30px 0;
+}
+@media (min-width: 800px) {
+  .form {
+    max-width: 60%;
+  }
+}
+
+.input-range {
+  margin-bottom: 160px;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+
 import myData from '../flights.json';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,17 +12,21 @@ class FlightForm extends Component {
     this.state = {
       from: '',
       to: '',
-      departureDate: moment()
-      //returnDate: moment().add(2, "days")
+      departureDate: moment(),
+      returnDate: moment().add(2, 'days')
     };
-    this.search = this.search.bind(this);
-    this.change = this.change.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeDeparture = this.handleChangeDeparture.bind(this);
+    this.handleChangeReturn = this.handleChangeReturn.bind(this);
   }
 
-  handleChange(date) {
+  handleChangeDeparture(date) {
     this.setState({
       departureDate: date
+    });
+  }
+  handleChangeReturn(date) {
+    this.setState({
+      returnDate: date
     });
   }
 
@@ -30,29 +35,40 @@ class FlightForm extends Component {
     this.showInputError(e.target.name);
   }
 
-  getFlightData() {
-    let results = myData.filter((item, index) => {
-      if (item.departure.iataCode !== this.state.from.toUpperCase()) {
+  mapFlightData(location1, location2, date) {
+    console.log(location1, location2, date);
+    let result = myData.filter((item, index) => {
+      if (item.departure.iataCode !== location1) {
         return;
       }
-      if (item.arrival.iataCode !== this.state.to.toUpperCase()) {
+      if (item.arrival.iataCode !== location2) {
         return;
       }
       if (
-        moment.utc(item.departure.scheduledTime).format('MM/DD/YYYY') !==
-        this.state.departureDate.format('MM/DD/YYYY')
+        moment.utc(item.departure.scheduledTime).format('MM/DD/YYYY') !== date
       ) {
+        console.log("bjosdike");
         return;
       }
+      console.log(item);
       return item;
     });
-    this.props.action(results);
+    return result;
   }
 
   search(e) {
     e.preventDefault();
     if (this.validate()) {
-      this.getFlightData();
+      let to = this.state.to.toUpperCase();
+      let from = this.state.from.toUpperCase();
+      let result1 = this.mapFlightData(from, to, this.state.departureDate.format('MM/DD/YYYY'));
+      
+      if (!this.props.returnStatus) {
+        this.props.action(result1);
+      } else {
+        let result2 = this.mapFlightData(to, from, this.state.returnDate.format('MM/DD/YYYY'));
+        this.props.action(result1, result2);
+      }
     }
   }
 
@@ -84,6 +100,7 @@ class FlightForm extends Component {
   }
 
   render() {
+    const returnStatus = this.props.returnStatus;
     return (
       <div className="wrapper">
         <form>
@@ -117,25 +134,26 @@ class FlightForm extends Component {
           </div>
           <div className="group">
             <DatePicker
-              name="date"
+              name="departureDate"
               selected={this.state.departureDate}
-              onChange={this.handleChange}
+              onChange={this.handleChangeDeparture}
               minDate={moment()}
               withPortal
               maxDate={moment().add(5, 'months')}
-              showDisabledMonthNavigation
             />
           </div>
-          {/* <div className="group">
-            <DatePicker
-            selected={this.state.returnDate}
-            onChange={this.handleChange}
-            minDate={moment()}
-            withPortal
-            maxDate={moment().add(5, "months")}
-            showDisabledMonthNavigation
-            />
-          </div> */}
+          {returnStatus ? (
+            <div className="group">
+              <DatePicker
+                name="returnDate"
+                selected={this.state.returnDate}
+                onChange={this.handleChangeReturn}
+                minDate={moment()}
+                withPortal
+                maxDate={moment().add(5, 'months')}
+              />
+            </div>
+          ) : null}
           <div className="btn-box">
             <button
               className="button btn-submit"

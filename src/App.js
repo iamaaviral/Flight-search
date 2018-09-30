@@ -2,39 +2,61 @@ import React, { Component } from 'react';
 import './App.css';
 import FlightForm from './components/FormInput';
 import FlightList from './components/FlightList';
+import Filter from './components/Filter';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResult: []
+      oneSearchResult: [],
+      returnSearchResult: ["hahaha"],
+      returnStatus: false
     };
     this.searchResults = this.searchResults.bind(this);
   }
 
-  searchResults(data) {
+  searchResults(results1, result2= []) {
     this.setState({
-      searchResult: data
+      oneSearchResult: results1,
+      returnSearchResult: result2
     });
   }
 
   render() {
     let button;
-    if (this.state.searchResult.length) {
-      button = <FlightList result={this.state.searchResult} />;
+    if (this.state.oneSearchResult.length) {
+      button = (
+          <FlightList
+            oneResult={this.state.oneSearchResult}
+            returnResult={this.state.returnSearchResult}
+          />
+      );
     } else {
       button = <h1>Nothing to display</h1>;
     }
     return (
       <div className="App">
         <div className="left-side-bar">
-          <div className="lists-scroll">
-            <FlightForm action={this.searchResults} />
+          <div className="status-btn">
+            <button onClick={() => this.setState({ returnStatus: false })}>
+              One Way
+            </button>
+            <button onClick={() => this.setState({ returnStatus: true })}>
+              Return
+            </button>
           </div>
+          <div className="lists-scroll">
+            <FlightForm
+              action={this.searchResults}
+              returnStatus={this.state.returnStatus}
+            />
+            <div className="wrapper">
+              <Filter />
+            </div>
+          </div>
+          <p>{this.state.value}</p>
         </div>
-        <div className="right-side-bar">
-          <div className="main">{button}</div>
-        </div>
+        <div className="right-side-bar">{button}</div>
       </div>
     );
   }

@@ -1,45 +1,56 @@
 import React, { Component } from 'react';
-
-import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
 class FlightList extends Component {
-  render() {
-    // const createItem = function item(itemText, i) {
+  renderList(items) {
     return (
-      // <TodoItem dispatch={this.props.dispatch} key={i} value={i}>{itemText}</TodoItem>
-
-      <li>
-        <span role="presentation" className="completed">
-          {this.props.result[0].airline.name}
-        </span>
-        <div className="btn">
-          <button className="imp">
-            {' '}
-            <i className="fa fa-star-o" />
-          </button>
-          <button className="del">
-            {' '}
-            <i className="fa fa-trash-o" />
-          </button>
-        </div>
-        {/* <i className="fa fa-trash" aria-hidden="true" onClick={this.handleDelete.bind(this) > */}
-      </li>
+      <div>
+        <ul>
+          {items.map((itemText, i) => {
+            const departureTime = moment(
+              itemText.departure.scheduledTime,
+              'HH:mm:ss a'
+            );
+            const arrivalTime = moment(
+              itemText.arrival.scheduledTime,
+              'HH:mm:ss a'
+            );
+            var duration = moment.duration(arrivalTime.diff(departureTime));
+            var hours = parseInt(duration.asHours());
+            var minutes = parseInt(duration.asMinutes()) % 60;
+            return (
+              <li key={i}>
+                <div className="list" role="presentation">
+                  <div>{itemText.airline.name}</div>
+                  <div>
+                    {departureTime.format('HH:mm a')} -{' '}
+                    {arrivalTime.format('HH:mm a')}
+                  </div>
+                  <div>{hours + 'h' + minutes + 'm'}</div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
-    // };
-    // let allitems = this.props.todos;
-    // // Here is the filter function
-    // const status = this.props.filter[0].Status;
-    // switch (status) {
-    //   case 'false':
-    //     allitems = allitems.filter(t => t.important);
-    //     break;
-    //   case 'true':
-    //     allitems = allitems.filter(t => t.completed);
-    //     break;
-    //   default:
-    //     break;
-    // }
-    // return <ul>{createItem}</ul>;
+  }
+  render() {
+    let oneallitems = this.props.oneResult;
+    let returnallitems = this.props.returnResult;
+    // console.log(moment(allitems[0].departure.scheduledTime).format('hh:mm'));
+    return (
+      <div>
+        <div className="main">{this.renderList(oneallitems)}</div>
+        
+        <div className="main">
+         
+          {this.props.returnResult.length
+            ? <div> <h1>Return Flights</h1>{this.renderList(returnallitems)}</div>
+            : null}
+        </div>
+      </div>
+    );
   }
 }
 
