@@ -9,13 +9,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       oneSearchResult: [],
-      returnSearchResult: ["hahaha"],
-      returnStatus: false
+      returnSearchResult: [],
+      returnStatus: false,
+      filter: {
+        minValue: 0,
+        maxValue: 50000
+      }
     };
     this.searchResults = this.searchResults.bind(this);
+    this.filterItem = this.filterItem.bind(this);
   }
 
-  searchResults(results1, result2= []) {
+  filterItem(minValue, maxValue) {
+    this.setState({
+      filter: {
+        ...this.state.filter,
+        minValue,
+        maxValue
+      }
+    });
+  }
+
+  searchResults(results1, result2 = []) {
     this.setState({
       oneSearchResult: results1,
       returnSearchResult: result2
@@ -26,10 +41,11 @@ class App extends React.Component {
     let button;
     if (this.state.oneSearchResult.length) {
       button = (
-          <FlightList
-            oneResult={this.state.oneSearchResult}
-            returnResult={this.state.returnSearchResult}
-          />
+        <FlightList
+          oneResult={this.state.oneSearchResult}
+          returnResult={this.state.returnSearchResult}
+          filter={this.state.filter}
+        />
       );
     } else {
       button = <h1>Nothing to display</h1>;
@@ -51,7 +67,7 @@ class App extends React.Component {
               returnStatus={this.state.returnStatus}
             />
             <div className="wrapper">
-              <Filter />
+              <Filter onFilter={this.filterItem} />
             </div>
           </div>
           <p>{this.state.value}</p>

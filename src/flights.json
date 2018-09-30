@@ -2,6 +2,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 1180,
     "departure": {
       "iataCode": "BLR",
       "icaoCode": "VOBL",
@@ -26,6 +27,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 3280,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -50,6 +52,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 5280,
     "departure": {
       "iataCode": "MAA",
       "icaoCode": "VOMM",
@@ -76,6 +79,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 8255,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -101,6 +105,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 10300,
     "departure": {
       "iataCode": "BLR",
       "icaoCode": "VOBL",
@@ -126,6 +131,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 6330,
     "departure": {
       "iataCode": "HYD",
       "icaoCode": "VOHS",
@@ -154,6 +160,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 12300,
     "departure": {
       "iataCode": "MAA",
       "icaoCode": "VOMM",
@@ -179,6 +186,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 3500,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -204,6 +212,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 8300,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -244,6 +253,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 10300,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -284,6 +294,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 2500,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -312,6 +323,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 3450,
     "departure": {
       "iataCode": "BOM",
       "icaoCode": "VABB",
@@ -357,6 +369,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 12800,
     "departure": {
       "iataCode": "BOM",
       "icaoCode": "VABB",
@@ -398,6 +411,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 12300,
     "departure": {
       "iataCode": "BOM",
       "icaoCode": "VABB",
@@ -439,6 +453,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 2300,
     "departure": {
       "iataCode": "BOM",
       "icaoCode": "VABB",
@@ -468,6 +483,7 @@
   {
     "type": "arrival",
     "status": "landed",
+    "price": 13050,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -493,6 +509,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 5300,
     "departure": {
       "iataCode": "IXC",
       "icaoCode": "VICG",
@@ -515,6 +532,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 18300,
     "departure": {
       "iataCode": "BLR",
       "icaoCode": "VOBL",
@@ -539,6 +557,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 6300,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",
@@ -562,6 +581,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 12000,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -585,6 +605,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 15300,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -608,6 +629,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 2500,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -631,6 +653,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 19300,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -654,6 +677,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 7970,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -677,6 +701,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 5300,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -700,6 +725,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 3800,
     "departure": {
       "iataCode": "PNQ",
       "icaoCode": "VIDP",
@@ -723,6 +749,7 @@
   {
     "type": "arrival",
     "status": "scheduled",
+    "price": 13200,
     "departure": {
       "iataCode": "DEL",
       "icaoCode": "VIDP",

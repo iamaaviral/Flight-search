@@ -28,30 +28,30 @@ class Filter extends React.Component {
     return (
       <div>
         <div>
-        <span>0</span>
-        <input
-          id="typeinp"
-          type="range"
-          min="0"
-          max="50000"
-          value={this.state.minValue}
-          onChange={this.minHandleChange}
-          step="500"
-        />
-        <span>50000</span>
+          <span>0</span>
+          <input
+            id="typeinp"
+            type="range"
+            min="0"
+            max="50000"
+            value={this.state.minValue}
+            onChange={this.minHandleChange}
+            step="500"
+          />
+          <span>50000</span>
         </div>
         <div>
-        <span>{this.state.minValue}</span>
-        <input
-          id="typeinp"
-          type="range"
-          min={this.state.minValue}
-          max="50000"
-          value={this.state.maxValue}
-          onChange={this.maxHandleChange}
-          step="500"
-        />
-        <span>50000</span>
+          <span>{this.state.minValue}</span>
+          <input
+            id="typeinp"
+            type="range"
+            min={this.state.minValue}
+            max="50000"
+            value={this.state.maxValue}
+            onChange={this.maxHandleChange}
+            step="500"
+          />
+          <span>50000</span>
         </div>
         <div>
           {`min: ₹${this.state.minValue} `}
@@ -60,7 +60,9 @@ class Filter extends React.Component {
         <div className="btn-box">
           <button
             className="button btn-submit"
-            onClick={e => this.search(e)}
+            onClick={() =>
+              this.props.onFilter(this.state.minValue, this.state.maxValue)
+            }
             type="filter"
           >
             FILTER

@@ -36,7 +36,6 @@ class FlightForm extends Component {
   }
 
   mapFlightData(location1, location2, date) {
-    console.log(location1, location2, date);
     let result = myData.filter((item, index) => {
       if (item.departure.iataCode !== location1) {
         return;
@@ -47,10 +46,9 @@ class FlightForm extends Component {
       if (
         moment.utc(item.departure.scheduledTime).format('MM/DD/YYYY') !== date
       ) {
-        console.log("bjosdike");
+        console.log('bjosdike');
         return;
       }
-      console.log(item);
       return item;
     });
     return result;
@@ -61,12 +59,20 @@ class FlightForm extends Component {
     if (this.validate()) {
       let to = this.state.to.toUpperCase();
       let from = this.state.from.toUpperCase();
-      let result1 = this.mapFlightData(from, to, this.state.departureDate.format('MM/DD/YYYY'));
-      
+      let result1 = this.mapFlightData(
+        from,
+        to,
+        this.state.departureDate.format('MM/DD/YYYY')
+      );
+
       if (!this.props.returnStatus) {
         this.props.action(result1);
       } else {
-        let result2 = this.mapFlightData(to, from, this.state.returnDate.format('MM/DD/YYYY'));
+        let result2 = this.mapFlightData(
+          to,
+          from,
+          this.state.returnDate.format('MM/DD/YYYY')
+        );
         this.props.action(result1, result2);
       }
     }
