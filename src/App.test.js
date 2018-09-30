@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import Renderer from 'react-test-renderer';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import App from './App'
+
+describe('Tests for App screen', () => {
+  it('should render App without crashing', () => {
+    const snap = Renderer.create(<App />).toJSON();
+    expect(snap).toMatchSnapshot();
+  });
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import FlightForm from './components/FormInput';
 import FlightList from './components/FlightList';
@@ -48,16 +48,16 @@ class App extends React.Component {
         />
       );
     } else {
-      button = <h1>Nothing to display</h1>;
+      button = (<div className="message-text"><h1>No Flights To Display</h1></div>);
     }
     return (
       <div className="App">
         <div className="left-side-bar">
-          <div className="status-btn">
-            <button onClick={() => this.setState({ returnStatus: false })}>
+          <div className="btn-box">
+            <button className="button btn-submit" onClick={() => this.setState({ returnStatus: false })}>
               One Way
             </button>
-            <button onClick={() => this.setState({ returnStatus: true })}>
+            <button className="button btn-submit" onClick={() => this.setState({ returnStatus: true })}>
               Return
             </button>
           </div>

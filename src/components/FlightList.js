@@ -43,17 +43,21 @@ class FlightList extends Component {
     // console.log(moment(allitems[0].departure.scheduledTime).format('hh:mm'));
     return (
       <div>
+      <div className="return-wrapper">
+      <h1>Departure Flights</h1>
         <div className="main">{this.renderList(oneallitems)}</div>
-
-        <div className="main">
+    </div>
+        
           {this.props.returnResult.length ? (
+            <div className="return-wrapper">
+            <h1>Return Flights</h1>
+            <div className="main">
             <div>
-              {' '}
-              <h1>Return Flights</h1>
               {this.renderList(returnallitems)}
             </div>
+          </div>
+          </div>
           ) : null}
-        </div>
       </div>
     );
   }
